@@ -91,14 +91,20 @@ public class Blackjack {
 	 */
 	private void playerTurn() {
 		System.out.println("Dealer Showing: " + dealer.getShowing().getValue());
-		boolean hitting = true;
+		boolean playing = true;
 		boolean busted = false;
-		while (hitting && !busted) {
+		while (playing && !busted) {
 			System.out.println("Player Hand: " + player.getHand().getValue());
-			hitting = player.decideHit();
-			if (hitting) {
+			//hit, split, double
+			String decision = player.makeMove();
+			if (decision.equals("hit")) {
 				player.receive(deck.dealCard());
+				System.out.println("Hit");
 				System.out.println("Player Hand: " + player.getHand().getValue());
+			} else if (decision.equals("split")) {
+				
+			} else {
+				playing = false;
 			}
 			busted = player.getHand().checkBust();
 		}

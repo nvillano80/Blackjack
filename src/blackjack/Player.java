@@ -99,16 +99,16 @@ public class Player {
 	 * 
 	 * @return true if hitting
 	 */
-	public boolean decideHit() {
+	public String makeMove() {
 		System.out.print("Hit/Stand? ");
 		String input = sc.next();
-		if (input.equalsIgnoreCase("h")) {
-			return true;
-		} else if (input.equalsIgnoreCase("s")) {
-			return false;
+		if (input.equalsIgnoreCase("h") || input.equalsIgnoreCase("hit")) {
+			return "hit";
+		} else if (input.equalsIgnoreCase("s") || input.equalsIgnoreCase("stand")) {
+			return "stand";
 		} else {
 			System.out.println("Invalid Input!");
-			return decideHit();
+			return makeMove();
 		}
 	}
 
